@@ -1,9 +1,15 @@
 package com.notebook.service.model;
 
+import lombok.*;
 import org.graalvm.polyglot.Context;
 
 import java.io.ByteArrayOutputStream;
 
+@Data
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 public class GraalExecutionContext {
 
     private ByteArrayOutputStream outputStream;
@@ -15,38 +21,6 @@ public class GraalExecutionContext {
         this.outputStream = outputStream;
         this.errorsStream = errorsStream;
         this.context = context;
-    }
-
-    public ByteArrayOutputStream getOutputStream() {
-        return outputStream;
-    }
-
-    public ByteArrayOutputStream getErrorsStream() {
-        return errorsStream;
-    }
-
-    public void setOutputStream(ByteArrayOutputStream outputStream) {
-        this.outputStream = outputStream;
-    }
-
-    public void setErrorsStream(ByteArrayOutputStream errorsStream) {
-        this.errorsStream = errorsStream;
-    }
-
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public boolean isTimedOut() {
-        return timedOut;
-    }
-
-    public void setTimedOut(boolean timedOut) {
-        this.timedOut = timedOut;
     }
 
     public String getOutput() {

@@ -7,6 +7,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class NotebookRequest {
     private String code;
     private String interactionId;

@@ -7,7 +7,9 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class NotbookResponse {
+@ToString
+@EqualsAndHashCode
+public class NotebookResponse {
     private String response;
     private String errors;
     private String interactionId;
