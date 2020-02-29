@@ -11,8 +11,8 @@
     <groupId>com.notebook.service</groupId>
     <artifactId>notebook-as-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>notebookLanguage</name>
-    <description>Multilang Interpreter</description>
+    <name>graal-notebook-as-service</name>
+    <description>Graal VM based notebook</description>
 
     <properties>
         <java.version>1.8</java.version>
