@@ -68,7 +68,7 @@ http://localhost:6464/swagger-ui.html
 
 *NOTE* interactionId provides ability to distinguish between two users. Futher it provides mechanism of continuation of the same execution context of the user.
 
-*NOTE* %python provides mechanism to switch between different lanauges.
+*NOTE* %python provides mechanism to switch between different languages.
 
 - Using classical curl :
 
