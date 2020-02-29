@@ -43,6 +43,14 @@ $ gu -list
 $ mvn package -DskipTests
 ````
 
+Docker run:
+
+```$shell
+mvn dockerfile:build
+
+docker run -p 6464:6464 notebook-as-service/notebook-as-service
+```
+
 Time to play:
 
 ```

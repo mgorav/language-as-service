@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <docker.image.prefix>notebookLanguage</docker.image.prefix>
+        <docker.image.prefix>notebook-as-service</docker.image.prefix>
     </properties>
 
     <dependencies>
