@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.graalvm.truffle</groupId>
             <artifactId>truffle-api</artifactId>
-            <version>19.0.0</version>
+            <version>20.0.0</version>
         </dependency>
 
         <dependency>

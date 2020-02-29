@@ -91,7 +91,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.2.4.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.2.4.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.6.3" level="project" />
-    <orderEntry type="library" name="Maven: org.graalvm.truffle:truffle-api:19.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.graalvm.truffle:truffle-api:20.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.graalvm.truffle:truffle-dsl-processor:20.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.graalvm.sdk:graal-sdk:20.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springdoc:springdoc-openapi-ui:1.2.32" level="project" />
