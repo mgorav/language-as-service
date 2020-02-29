@@ -1,5 +1,0 @@
-com/notebook/service/validation/NotebookRequestValidatorTest.class
-com/notebook/service/NotebookLanguageApplicationTests.class
-com/notebook/service/controller/NotbookAsServiceApiTest.class
-com/notebook/service/service/impl/NotebookRequestParsingServiceImplTest.class
-com/notebook/service/service/impl/JSNotebookLanguageServiceImplTest.class
