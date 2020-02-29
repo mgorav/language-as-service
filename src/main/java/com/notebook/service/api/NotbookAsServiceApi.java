@@ -1,4 +1,4 @@
-package com.notebook.service.controller;
+package com.notebook.service.api;
 
 import com.notebook.service.model.*;
 import com.notebook.service.model.exception.NotebookException;

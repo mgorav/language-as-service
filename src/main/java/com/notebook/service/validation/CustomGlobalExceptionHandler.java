@@ -1,6 +1,6 @@
 package com.notebook.service.validation;
 
-import com.notebook.service.controller.NotbookAsServiceApi;
+import com.notebook.service.api.NotbookAsServiceApi;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
