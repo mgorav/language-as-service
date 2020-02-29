@@ -34,7 +34,7 @@ public abstract class GraalVmNotebookLanguageService implements NotebookLanguage
             throw new NotebookLanguageNotSupportedException();
         }
 
-        GraalExecutionContext graalExecutionContext = getContext(request.getSessionId());
+        GraalExecutionContext graalExecutionContext = getContext(request.getInteractionId());
         final Context context = graalExecutionContext.getContext();
 
         Timer timer = new Timer(true);
@@ -62,7 +62,7 @@ public abstract class GraalVmNotebookLanguageService implements NotebookLanguage
             timer.purge();
             if (e.isCancelled()) {
                 // remove context
-                sessionContexts.remove(request.getSessionId());
+                sessionContexts.remove(request.getInteractionId());
                 throw new NoteboolLanguageTimeOutException();
             }
 
@@ -79,7 +79,7 @@ public abstract class GraalVmNotebookLanguageService implements NotebookLanguage
     }
 
     /**
-     * Get Execution Context by sessionId
+     * Get Execution Context by interactionId
      * @param sessionId
      * @return
      */

@@ -25,7 +25,7 @@ public class JSNotebookLanguageServiceImplTest {
 		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("console.log('"+ helloWorld + "');");
-		request.setSessionId("mySessionId");
+		request.setInteractionId("mySessionId");
 
 		GraalExecutionResponse response = jsInterpreterService.execute(request);
 		assertTrue(response.getErrors().isEmpty());
@@ -37,7 +37,7 @@ public class JSNotebookLanguageServiceImplTest {
 		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("console.log(a)");
-		request.setSessionId("mySessionId");
+		request.setInteractionId("mySessionId");
 
 		GraalExecutionResponse response = jsInterpreterService.execute(request);
 		assertTrue(response.getOutput().isEmpty());
@@ -49,7 +49,7 @@ public class JSNotebookLanguageServiceImplTest {
 		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("var a = 5;");
-		request.setSessionId("mySessionId");
+		request.setInteractionId("mySessionId");
 
 		GraalExecutionResponse response1 = jsInterpreterService.execute(request);
 		assertTrue(response1.getOutput().isEmpty());
@@ -67,7 +67,7 @@ public class JSNotebookLanguageServiceImplTest {
 		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("function f() { console.log('" + helloWorld + "') };");
-		request.setSessionId("mySessionId");
+		request.setInteractionId("mySessionId");
 
 		GraalExecutionResponse response1 = jsInterpreterService.execute(request);
 		assertTrue(response1.getOutput().isEmpty());
@@ -86,7 +86,7 @@ public class JSNotebookLanguageServiceImplTest {
 		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("while(true);");
-		request.setSessionId("mySessionId");
+		request.setInteractionId("mySessionId");
 
 		jsInterpreterService.execute(request);
 	}
@@ -96,7 +96,7 @@ public class JSNotebookLanguageServiceImplTest {
 		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("function f() { while(true) {console.log(5)} };");
-		request.setSessionId("mySessionId");
+		request.setInteractionId("mySessionId");
 
 		GraalExecutionResponse response1 = jsInterpreterService.execute(request);
 		assertTrue(response1.getOutput().isEmpty());
