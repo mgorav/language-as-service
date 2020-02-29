@@ -66,6 +66,8 @@ http://localhost:6464/swagger-ui.html
 }
 ```
 
+*NOTE* sessionId provides ability to distinguish between two users. Futher it provides mechanism of continuation of the same execution context of the user.
+
 - Using classical curl :
 
 ```
