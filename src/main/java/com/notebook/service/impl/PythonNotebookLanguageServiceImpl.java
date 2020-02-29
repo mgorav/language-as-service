@@ -1,7 +1,7 @@
-package com.notebook.service.service.impl;
+package com.notebook.service.impl;
 
+import com.notebook.service.GraalVmNotebookLanguageService;
 import com.notebook.service.model.NotebookLanguage;
-import com.notebook.service.service.GraalVmNotebookLanguageService;
 import org.springframework.stereotype.Service;
 
 @Service

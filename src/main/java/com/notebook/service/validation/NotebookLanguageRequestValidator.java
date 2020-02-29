@@ -5,7 +5,7 @@ import com.notebook.service.model.NotebookRequest;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class NotebookLanguageRequestValidator implements ConstraintValidator<CorrectRequest, NotebookRequest> {
+public class NotebookLanguageRequestValidator implements ConstraintValidator<ValidRequest, NotebookRequest> {
 
     private static final String REQUEST_PATTERN = "%(\\w+)\\s+(.*)";
 

@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Constraint(validatedBy = { NotebookLanguageRequestValidator.class })
-public @interface CorrectRequest {
+public @interface ValidRequest {
     String message() default "Invalid Interpret Request";
 
     Class<?>[] groups() default {};

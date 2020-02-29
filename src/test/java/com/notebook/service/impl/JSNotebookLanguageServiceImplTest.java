@@ -1,4 +1,4 @@
-package com.notebook.service.service.impl;
+package com.notebook.service.impl;
 
 import com.notebook.service.NotbookAsServiceApp;
 import com.notebook.service.model.ExecutionRequest;

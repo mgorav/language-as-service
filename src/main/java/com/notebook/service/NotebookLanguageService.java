@@ -1,4 +1,4 @@
-package com.notebook.service.service;
+package com.notebook.service;
 
 import com.notebook.service.model.ExecutionRequest;
 import com.notebook.service.model.GraalExecutionResponse;

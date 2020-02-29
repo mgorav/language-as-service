@@ -1,6 +1,6 @@
-package com.notebook.service.service;
+package com.notebook.service;
 
-import com.notebook.service.configuration.AppProperties;
+import com.notebook.service.configurer.AppProperties;
 import com.notebook.service.model.GraalExecutionContext;
 import com.notebook.service.model.ExecutionRequest;
 import com.notebook.service.model.GraalExecutionResponse;

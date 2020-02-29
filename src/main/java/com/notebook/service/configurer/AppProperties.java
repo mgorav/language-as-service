@@ -1,4 +1,4 @@
-package com.notebook.service.configuration;
+package com.notebook.service.configurer;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

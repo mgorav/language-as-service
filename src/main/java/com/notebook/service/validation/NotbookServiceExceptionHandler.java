@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @ControllerAdvice(assignableTypes = NotbookAsServiceApi.class)
-public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
+public class NotbookServiceExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
     public void constraintViolationException(HttpServletResponse response) throws IOException {
