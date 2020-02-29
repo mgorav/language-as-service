@@ -2,7 +2,7 @@ package com.notebook.service;
 
 import com.notebook.service.configurer.AppProperties;
 import com.notebook.service.model.GraalExecutionContext;
-import com.notebook.service.model.ExecutionRequest;
+import com.notebook.service.model.NotbookExecutionRequest;
 import com.notebook.service.model.GraalExecutionResponse;
 import com.notebook.service.model.exception.NotebookLanguageNotSupportedException;
 import com.notebook.service.model.exception.NoteboolLanguageTimeOutException;
@@ -27,7 +27,7 @@ public abstract class GraalVmNotebookLanguageService implements NotebookLanguage
      * {@inheritDoc}
      */
     @Override
-    public GraalExecutionResponse execute(ExecutionRequest request) {
+    public GraalExecutionResponse execute(NotbookExecutionRequest request) {
 
         // Check if language supported
         if (unsupportedLanguage()) {

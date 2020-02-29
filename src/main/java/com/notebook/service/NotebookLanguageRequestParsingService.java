@@ -1,6 +1,6 @@
 package com.notebook.service;
 
-import com.notebook.service.model.ExecutionRequest;
+import com.notebook.service.model.NotbookExecutionRequest;
 import com.notebook.service.model.NotebookRequest;
 import com.notebook.service.model.exception.InvalidNotebookRequestException;
 
@@ -14,5 +14,5 @@ public interface NotebookLanguageRequestParsingService {
      * @param request
      * @return
      */
-    ExecutionRequest parseInterpreterRequest(NotebookRequest request) throws InvalidNotebookRequestException;
+    NotbookExecutionRequest parseInterpreterRequest(NotebookRequest request) throws InvalidNotebookRequestException;
 }

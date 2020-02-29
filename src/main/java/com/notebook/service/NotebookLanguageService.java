@@ -1,6 +1,6 @@
 package com.notebook.service;
 
-import com.notebook.service.model.ExecutionRequest;
+import com.notebook.service.model.NotbookExecutionRequest;
 import com.notebook.service.model.GraalExecutionResponse;
 import com.notebook.service.model.NotebookLanguage;
 import com.notebook.service.model.exception.NotebookException;
@@ -23,5 +23,5 @@ public interface NotebookLanguageService {
      * @return
      * @throws NotebookException
      */
-    GraalExecutionResponse execute(ExecutionRequest request) throws NotebookException;
+    GraalExecutionResponse execute(NotbookExecutionRequest request) throws NotebookException;
 }

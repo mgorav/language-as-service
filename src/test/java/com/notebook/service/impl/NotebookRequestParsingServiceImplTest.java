@@ -1,6 +1,6 @@
 package com.notebook.service.impl;
 
-import com.notebook.service.model.ExecutionRequest;
+import com.notebook.service.model.NotbookExecutionRequest;
 import com.notebook.service.model.NotebookRequest;
 import com.notebook.service.model.exception.InvalidNotebookRequestException;
 import org.junit.Before;
@@ -24,9 +24,9 @@ public class NotebookRequestParsingServiceImplTest {
     public void parseInterpreterRequest() throws InvalidNotebookRequestException {
         NotebookRequest request = new NotebookRequest();
         request.setCode("%js console.log('Hello World');");
-        ExecutionRequest executionRequest = interpreterRequestParsingService.parseInterpreterRequest(request);
-        assertEquals("js", executionRequest.getLanguage());
-        assertEquals("console.log('Hello World');", executionRequest.getCode());
+        NotbookExecutionRequest notbookExecutionRequest = interpreterRequestParsingService.parseInterpreterRequest(request);
+        assertEquals("js", notbookExecutionRequest.getLanguage());
+        assertEquals("console.log('Hello World');", notbookExecutionRequest.getCode());
     }
 
     @Test(expected = InvalidNotebookRequestException.class)

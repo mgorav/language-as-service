@@ -1,7 +1,7 @@
 package com.notebook.service.impl;
 
 import com.notebook.service.NotebookLanguageRequestParsingService;
-import com.notebook.service.model.ExecutionRequest;
+import com.notebook.service.model.NotbookExecutionRequest;
 import com.notebook.service.model.NotebookRequest;
 import com.notebook.service.model.exception.InvalidNotebookRequestException;
 import org.springframework.stereotype.Service;
@@ -19,17 +19,17 @@ public class NotebookLanguageRequestParsingServiceImpl implements NotebookLangua
      * {@inheritDoc}
      */
     @Override
-    public ExecutionRequest parseInterpreterRequest(NotebookRequest request) {
+    public NotbookExecutionRequest parseInterpreterRequest(NotebookRequest request) {
         Matcher matcher = pattern.matcher(request.getCode());
         if (matcher.matches()) {
             String language = matcher.group(1);
             String code = matcher.group(2);
 
-            ExecutionRequest executionRequest = new ExecutionRequest();
-            executionRequest.setCode(code);
-            executionRequest.setLanguage(language);
+            NotbookExecutionRequest notbookExecutionRequest = new NotbookExecutionRequest();
+            notbookExecutionRequest.setCode(code);
+            notbookExecutionRequest.setLanguage(language);
 
-            return executionRequest;
+            return notbookExecutionRequest;
         }
 
         throw new InvalidNotebookRequestException();

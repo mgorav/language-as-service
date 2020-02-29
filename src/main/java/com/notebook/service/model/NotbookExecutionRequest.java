@@ -1,6 +1,6 @@
 package com.notebook.service.model;
 
-public class ExecutionRequest {
+public class NotbookExecutionRequest {
     String language;
     String code;
     String sessionId;

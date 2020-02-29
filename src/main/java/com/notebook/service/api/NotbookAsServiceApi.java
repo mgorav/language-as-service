@@ -27,7 +27,7 @@ public class NotbookAsServiceApi {
 
     @PostMapping("/execute")
     public ResponseEntity<NotbookResponse> execute(@ValidRequest @RequestBody NotebookRequest notebookRequest, HttpSession httpSession) throws NotebookException {
-        ExecutionRequest request = notebookLanguageRequestParsingService.parseInterpreterRequest(notebookRequest);
+        NotbookExecutionRequest request = notebookLanguageRequestParsingService.parseInterpreterRequest(notebookRequest);
         NotebookLanguageService notebookLanguageService = notebookLanguageServiceFactory.getInterpreterService(request.getLanguage());
         String sessionId = notebookRequest.getInteractionId() != null ? notebookRequest.getInteractionId() : httpSession.getId();
         request.setSessionId(sessionId);

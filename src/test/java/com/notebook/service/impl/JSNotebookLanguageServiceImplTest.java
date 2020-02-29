@@ -1,7 +1,7 @@
 package com.notebook.service.impl;
 
 import com.notebook.service.NotbookAsServiceApp;
-import com.notebook.service.model.ExecutionRequest;
+import com.notebook.service.model.NotbookExecutionRequest;
 import com.notebook.service.model.GraalExecutionResponse;
 import com.notebook.service.model.exception.NoteboolLanguageTimeOutException;
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class JSNotebookLanguageServiceImplTest {
 	@Test
 	public void testSimpleConsoleLog() {
 		String helloWorld = "Hello World";
-		ExecutionRequest request = new ExecutionRequest();
+		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("console.log('"+ helloWorld + "');");
 		request.setSessionId("mySessionId");
@@ -34,7 +34,7 @@ public class JSNotebookLanguageServiceImplTest {
 
 	@Test
 	public void testUndefinedVariableError() {
-		ExecutionRequest request = new ExecutionRequest();
+		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("console.log(a)");
 		request.setSessionId("mySessionId");
@@ -46,7 +46,7 @@ public class JSNotebookLanguageServiceImplTest {
 
 	@Test
 	public void testDefinedVariable() {
-		ExecutionRequest request = new ExecutionRequest();
+		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("var a = 5;");
 		request.setSessionId("mySessionId");
@@ -64,7 +64,7 @@ public class JSNotebookLanguageServiceImplTest {
 	@Test
 	public void testDefinedFunction() {
 		String helloWorld = "Hello World";
-		ExecutionRequest request = new ExecutionRequest();
+		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("function f() { console.log('" + helloWorld + "') };");
 		request.setSessionId("mySessionId");
@@ -83,7 +83,7 @@ public class JSNotebookLanguageServiceImplTest {
 	// Food for thought: test timeout duration ?
 	@Test(expected = NoteboolLanguageTimeOutException.class)
 	public void testInfiniteLoop() {
-		ExecutionRequest request = new ExecutionRequest();
+		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("while(true);");
 		request.setSessionId("mySessionId");
@@ -93,7 +93,7 @@ public class JSNotebookLanguageServiceImplTest {
 
 	@Test
 	public void testResetContext() {
-		ExecutionRequest request = new ExecutionRequest();
+		NotbookExecutionRequest request = new NotbookExecutionRequest();
 		request.setLanguage("js");
 		request.setCode("function f() { while(true) {console.log(5)} };");
 		request.setSessionId("mySessionId");
