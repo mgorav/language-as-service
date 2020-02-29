@@ -62,15 +62,15 @@ http://localhost:6464/swagger-ui.html
 ```json
 {
   "code": "%python print('Hello Graal')", 
-  "sessionId": "graal-sessionId-1"
+  "interactionId": "graal-interactionId-1"
 }
 ```
 
-*NOTE* sessionId provides ability to distinguish between two users. Futher it provides mechanism of continuation of the same execution context of the user.
+*NOTE* interactionId provides ability to distinguish between two users. Futher it provides mechanism of continuation of the same execution context of the user.
 
 - Using classical curl :
 
 ```
-$ curl -X POST  http://localhost:6464/execute  -d '{"code": "%python print(\"Hello Graal\")", "sessionId": "graal-sessionId-1"}'
+$ curl -X POST  http://localhost:6464/execute  -d '{"code": "%python print(\"Hello Graal\")", "interactionId": "graal-interactionId-1"}'
 ```
 

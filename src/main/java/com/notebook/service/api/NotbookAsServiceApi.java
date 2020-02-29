@@ -29,7 +29,7 @@ public class NotbookAsServiceApi {
     public ResponseEntity<NotbookResponse> execute(@CorrectRequest @RequestBody NotebookRequest notebookRequest, HttpSession httpSession) throws NotebookException {
         ExecutionRequest request = notebookLanguageRequestParsingService.parseInterpreterRequest(notebookRequest);
         NotebookLanguageService notebookLanguageService = notebookLanguageServiceFactory.getInterpreterService(request.getLanguage());
-        String sessionId = notebookRequest.getSessionId() != null ? notebookRequest.getSessionId() : httpSession.getId();
+        String sessionId = notebookRequest.getInteractionId() != null ? notebookRequest.getInteractionId() : httpSession.getId();
         request.setSessionId(sessionId);
         GraalExecutionResponse graalExecutionResponse = notebookLanguageService.execute(request);
         NotbookResponse notbookResponse = new NotbookResponse();

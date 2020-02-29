@@ -2,7 +2,7 @@ package com.notebook.service.model;
 
 public class NotebookRequest {
     private String code;
-    private String sessionId;
+    private String interactionId;
 
     public String getCode() {
         return code;
@@ -12,11 +12,11 @@ public class NotebookRequest {
         this.code = code;
     }
 
-    public String getSessionId() {
-        return sessionId;
+    public String getInteractionId() {
+        return interactionId;
     }
 
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
+    public void setInteractionId(String interactionId) {
+        this.interactionId = interactionId;
     }
 }
