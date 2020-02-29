@@ -66,10 +66,9 @@ http://localhost:6464/swagger-ui.html
 }
 ```
 
-- Via curl :
+- Using classical curl :
 
 ```
 $ curl -X POST  http://localhost:6464/execute  -d '{"code": "%python print(\"Hello Graal\")", "sessionId": "graal-sessionId-1"}'
 ```
 
-``
