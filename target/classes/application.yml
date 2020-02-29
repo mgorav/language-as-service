@@ -1,0 +1,4 @@
+global-settings:
+    timeOutDuration: 5000
+server:
+    port: 6464
