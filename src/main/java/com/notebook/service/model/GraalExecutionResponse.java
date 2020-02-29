@@ -1,14 +1,14 @@
 package com.notebook.service.model;
 
-public class ExecutionResponse {
+public class GraalExecutionResponse {
     String output;
     String errors;
 
-    public ExecutionResponse() {
+    public GraalExecutionResponse() {
         // no args constructor
     }
 
-    public ExecutionResponse(String output, String errors) {
+    public GraalExecutionResponse(String output, String errors) {
         this.output = output;
         this.errors = errors;
     }

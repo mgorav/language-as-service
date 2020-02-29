@@ -1,11 +1,11 @@
 package com.notebook.service.service.impl;
 
 import com.notebook.service.model.NotebookLanguage;
-import com.notebook.service.service.GraalVmInterpreterService;
+import com.notebook.service.service.GraalVmNotebookLanguageService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class JSInterpreterServiceImpl extends GraalVmInterpreterService {
+public class JSNotebookLanguageServiceImpl extends GraalVmNotebookLanguageService {
 
     /**
      * {@inheritDoc}

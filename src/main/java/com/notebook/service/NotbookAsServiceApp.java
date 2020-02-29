@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InterpreterApplication {
+public class NotbookAsServiceApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(InterpreterApplication.class, args);
+        SpringApplication.run(NotbookAsServiceApp.class, args);
     }
 
 }

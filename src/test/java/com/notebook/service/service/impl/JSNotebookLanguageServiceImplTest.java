@@ -1,9 +1,9 @@
 package com.notebook.service.service.impl;
 
-import com.notebook.service.InterpreterApplication;
+import com.notebook.service.NotbookAsServiceApp;
 import com.notebook.service.model.ExecutionRequest;
-import com.notebook.service.model.ExecutionResponse;
-import com.notebook.service.model.exception.TimeOutException;
+import com.notebook.service.model.GraalExecutionResponse;
+import com.notebook.service.model.exception.NoteboolLanguageTimeOutException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +13,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = InterpreterApplication.class)
+@SpringBootTest(classes = NotbookAsServiceApp.class)
 public class JSNotebookLanguageServiceImplTest {
 
 	@Autowired
-	private JSInterpreterServiceImpl jsInterpreterService;
+	private JSNotebookLanguageServiceImpl jsInterpreterService;
 
 	@Test
 	public void testSimpleConsoleLog() {
@@ -27,7 +27,7 @@ public class JSNotebookLanguageServiceImplTest {
 		request.setCode("console.log('"+ helloWorld + "');");
 		request.setSessionId("mySessionId");
 
-		ExecutionResponse response = jsInterpreterService.execute(request);
+		GraalExecutionResponse response = jsInterpreterService.execute(request);
 		assertTrue(response.getErrors().isEmpty());
 		assertEquals(helloWorld + "\n", response.getOutput());
 	}
@@ -39,7 +39,7 @@ public class JSNotebookLanguageServiceImplTest {
 		request.setCode("console.log(a)");
 		request.setSessionId("mySessionId");
 
-		ExecutionResponse response = jsInterpreterService.execute(request);
+		GraalExecutionResponse response = jsInterpreterService.execute(request);
 		assertTrue(response.getOutput().isEmpty());
 		assertEquals("ReferenceError: a is not defined", response.getErrors());
 	}
@@ -51,12 +51,12 @@ public class JSNotebookLanguageServiceImplTest {
 		request.setCode("var a = 5;");
 		request.setSessionId("mySessionId");
 
-		ExecutionResponse response1 = jsInterpreterService.execute(request);
+		GraalExecutionResponse response1 = jsInterpreterService.execute(request);
 		assertTrue(response1.getOutput().isEmpty());
 		assertTrue(response1.getErrors().isEmpty());
 
 		request.setCode("console.log(a);");
-		ExecutionResponse response2 = jsInterpreterService.execute(request);
+		GraalExecutionResponse response2 = jsInterpreterService.execute(request);
 		assertEquals("5\n", response2.getOutput());
 		assertTrue(response2.getErrors().isEmpty());
 	}
@@ -69,19 +69,19 @@ public class JSNotebookLanguageServiceImplTest {
 		request.setCode("function f() { console.log('" + helloWorld + "') };");
 		request.setSessionId("mySessionId");
 
-		ExecutionResponse response1 = jsInterpreterService.execute(request);
+		GraalExecutionResponse response1 = jsInterpreterService.execute(request);
 		assertTrue(response1.getOutput().isEmpty());
 		assertTrue(response1.getErrors().isEmpty());
 
 		request.setCode("f();");
-		ExecutionResponse response2 = jsInterpreterService.execute(request);
+		GraalExecutionResponse response2 = jsInterpreterService.execute(request);
 		assertEquals(helloWorld + '\n', response2.getOutput());
 		assertTrue(response2.getErrors().isEmpty());
 	}
 
-	// TODO fake or force timeout ?
-	// TODO test timeout duration ?
-	@Test(expected = TimeOutException.class)
+	// Food for thought: fake or force timeout ?
+	// Food for thought: test timeout duration ?
+	@Test(expected = NoteboolLanguageTimeOutException.class)
 	public void testInfiniteLoop() {
 		ExecutionRequest request = new ExecutionRequest();
 		request.setLanguage("js");
@@ -98,7 +98,7 @@ public class JSNotebookLanguageServiceImplTest {
 		request.setCode("function f() { while(true) {console.log(5)} };");
 		request.setSessionId("mySessionId");
 
-		ExecutionResponse response1 = jsInterpreterService.execute(request);
+		GraalExecutionResponse response1 = jsInterpreterService.execute(request);
 		assertTrue(response1.getOutput().isEmpty());
 		assertTrue(response1.getErrors().isEmpty());
 
@@ -106,10 +106,10 @@ public class JSNotebookLanguageServiceImplTest {
 			request.setCode("f();");
 			jsInterpreterService.execute(request);
 			fail(); // Should throw TIMEOUT Exception
-		} catch (TimeOutException e) {}
+		} catch (NoteboolLanguageTimeOutException e) {}
 
 		request.setCode("f();");
-		ExecutionResponse response2 = jsInterpreterService.execute(request);
+		GraalExecutionResponse response2 = jsInterpreterService.execute(request);
 		assertTrue(response2.getOutput().isEmpty());
 		assertEquals("ReferenceError: f is not defined", response2.getErrors());
 	}

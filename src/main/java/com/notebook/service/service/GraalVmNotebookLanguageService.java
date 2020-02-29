@@ -1,11 +1,11 @@
 package com.notebook.service.service;
 
-import com.notebook.service.configuration.ApplicationProperties;
-import com.notebook.service.model.ExecutionContext;
+import com.notebook.service.configuration.AppProperties;
+import com.notebook.service.model.GraalExecutionContext;
 import com.notebook.service.model.ExecutionRequest;
-import com.notebook.service.model.ExecutionResponse;
-import com.notebook.service.model.exception.LanguageNotSupportedException;
-import com.notebook.service.model.exception.TimeOutException;
+import com.notebook.service.model.GraalExecutionResponse;
+import com.notebook.service.model.exception.NotebookLanguageNotSupportedException;
+import com.notebook.service.model.exception.NoteboolLanguageTimeOutException;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.PolyglotException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,25 +17,25 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class GraalVmInterpreterService implements InterpreterService {
+public abstract class GraalVmNotebookLanguageService implements NotebookLanguageService {
 
     @Autowired
-    private ApplicationProperties applicationProperties;
+    private AppProperties appProperties;
 
-    private Map<String, ExecutionContext> sessionContexts = new ConcurrentHashMap<>();
+    private Map<String, GraalExecutionContext> sessionContexts = new ConcurrentHashMap<>();
     /**
      * {@inheritDoc}
      */
     @Override
-    public ExecutionResponse execute(ExecutionRequest request) {
+    public GraalExecutionResponse execute(ExecutionRequest request) {
 
         // Check if language supported
         if (unsupportedLanguage()) {
-            throw new LanguageNotSupportedException();
+            throw new NotebookLanguageNotSupportedException();
         }
 
-        ExecutionContext executionContext = getContext(request.getSessionId());
-        final Context context = executionContext.getContext();
+        GraalExecutionContext graalExecutionContext = getContext(request.getSessionId());
+        final Context context = graalExecutionContext.getContext();
 
         Timer timer = new Timer(true);
         timer.schedule(new TimerTask() {
@@ -43,31 +43,31 @@ public abstract class GraalVmInterpreterService implements InterpreterService {
             public void run() {
                 try {
                     context.close(true);
-                    executionContext.getOutputStream().close();
-                    executionContext.getErrorsStream().close();
-                    executionContext.setTimedOut(true);
+                    graalExecutionContext.getOutputStream().close();
+                    graalExecutionContext.getErrorsStream().close();
+                    graalExecutionContext.setTimedOut(true);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-        }, applicationProperties.getTimeOutDuration());
+        }, appProperties.getTimeOutDuration());
 
         try {
             context.eval(getInterpreterLanguage().getName(), request.getCode());
             timer.cancel();
             timer.purge();
-            return new ExecutionResponse(executionContext.getOutput(), executionContext.getErrors());
+            return new GraalExecutionResponse(graalExecutionContext.getOutput(), graalExecutionContext.getErrors());
         } catch(PolyglotException e) {
             timer.cancel();
             timer.purge();
             if (e.isCancelled()) {
                 // remove context
                 sessionContexts.remove(request.getSessionId());
-                throw new TimeOutException();
+                throw new NoteboolLanguageTimeOutException();
             }
 
-            // TODO add polyglot exceptions handling ?
-            return new ExecutionResponse("" , e.getMessage());
+            // Food for thought: add polyglot exceptions handling ?
+            return new GraalExecutionResponse("" , e.getMessage());
         }
 
     }
@@ -83,16 +83,16 @@ public abstract class GraalVmInterpreterService implements InterpreterService {
      * @param sessionId
      * @return
      */
-    private ExecutionContext getContext(String sessionId) {
+    private GraalExecutionContext getContext(String sessionId) {
         return sessionContexts.computeIfAbsent(sessionId, key -> buildContext());
     }
 
-    private ExecutionContext buildContext() {
+    private GraalExecutionContext buildContext() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ByteArrayOutputStream errorsStream = new ByteArrayOutputStream();
         Context context = Context.newBuilder(getInterpreterLanguage().getName()).out(outputStream).err(errorsStream)
                 .build();
 
-        return new ExecutionContext(outputStream, errorsStream, context);
+        return new GraalExecutionContext(outputStream, errorsStream, context);
     }
 }

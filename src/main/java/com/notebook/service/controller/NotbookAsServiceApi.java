@@ -1,10 +1,10 @@
 package com.notebook.service.controller;
 
 import com.notebook.service.model.*;
-import com.notebook.service.model.exception.InterpreterException;
-import com.notebook.service.service.InterpreterRequestParsingService;
-import com.notebook.service.service.InterpreterService;
-import com.notebook.service.service.InterpreterServiceFactory;
+import com.notebook.service.model.exception.NotebookException;
+import com.notebook.service.service.NotebookLanguageRequestParsingService;
+import com.notebook.service.service.NotebookLanguageService;
+import com.notebook.service.service.NotebookLanguageServiceFactory;
 import com.notebook.service.validation.CorrectRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,21 +20,21 @@ import javax.servlet.http.HttpSession;
 public class NotbookAsServiceApi {
 
     @Autowired
-    private InterpreterRequestParsingService interpreterRequestParsingService;
+    private NotebookLanguageRequestParsingService notebookLanguageRequestParsingService;
 
     @Autowired
-    private InterpreterServiceFactory interpreterServiceFactory;
+    private NotebookLanguageServiceFactory notebookLanguageServiceFactory;
 
     @PostMapping("/execute")
-    public ResponseEntity<NotbookResponse> execute(@CorrectRequest @RequestBody NotebookRequest notebookRequest, HttpSession httpSession) throws InterpreterException {
-        ExecutionRequest request = interpreterRequestParsingService.parseInterpreterRequest(notebookRequest);
-        InterpreterService interpreterService = interpreterServiceFactory.getInterpreterService(request.getLanguage());
+    public ResponseEntity<NotbookResponse> execute(@CorrectRequest @RequestBody NotebookRequest notebookRequest, HttpSession httpSession) throws NotebookException {
+        ExecutionRequest request = notebookLanguageRequestParsingService.parseInterpreterRequest(notebookRequest);
+        NotebookLanguageService notebookLanguageService = notebookLanguageServiceFactory.getInterpreterService(request.getLanguage());
         String sessionId = notebookRequest.getSessionId() != null ? notebookRequest.getSessionId() : httpSession.getId();
         request.setSessionId(sessionId);
-        ExecutionResponse executionResponse = interpreterService.execute(request);
+        GraalExecutionResponse graalExecutionResponse = notebookLanguageService.execute(request);
         NotbookResponse notbookResponse = new NotbookResponse();
-        notbookResponse.setResponse(executionResponse.getOutput());
-        notbookResponse.setErrors(executionResponse.getErrors());
+        notbookResponse.setResponse(graalExecutionResponse.getOutput());
+        notbookResponse.setErrors(graalExecutionResponse.getErrors());
         notbookResponse.setSessionId(sessionId);
         return ResponseEntity.ok(notbookResponse);
     }

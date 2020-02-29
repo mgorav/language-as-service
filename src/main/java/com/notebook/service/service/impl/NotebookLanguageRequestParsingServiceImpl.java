@@ -2,15 +2,15 @@ package com.notebook.service.service.impl;
 
 import com.notebook.service.model.ExecutionRequest;
 import com.notebook.service.model.NotebookRequest;
-import com.notebook.service.model.exception.InvalidInterpreterRequestException;
-import com.notebook.service.service.InterpreterRequestParsingService;
+import com.notebook.service.model.exception.InvalidNotebookRequestException;
+import com.notebook.service.service.NotebookLanguageRequestParsingService;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class InterpreterRequestParsingServiceImpl implements InterpreterRequestParsingService {
+public class NotebookLanguageRequestParsingServiceImpl implements NotebookLanguageRequestParsingService {
 
     private static final String REQUEST_PATTERN = "%(\\w+)\\s+(.*)";
     private static final Pattern pattern = Pattern.compile(REQUEST_PATTERN);
@@ -32,6 +32,6 @@ public class InterpreterRequestParsingServiceImpl implements InterpreterRequestP
             return executionRequest;
         }
 
-        throw new InvalidInterpreterRequestException();
+        throw new InvalidNotebookRequestException();
     }
 }

@@ -4,14 +4,14 @@ import org.graalvm.polyglot.Context;
 
 import java.io.ByteArrayOutputStream;
 
-public class ExecutionContext {
+public class GraalExecutionContext {
 
     private ByteArrayOutputStream outputStream;
     private ByteArrayOutputStream errorsStream;
     private Context context;
     private boolean timedOut = false;
 
-    public ExecutionContext(ByteArrayOutputStream outputStream, ByteArrayOutputStream errorsStream, Context context) {
+    public GraalExecutionContext(ByteArrayOutputStream outputStream, ByteArrayOutputStream errorsStream, Context context) {
         this.outputStream = outputStream;
         this.errorsStream = errorsStream;
         this.context = context;

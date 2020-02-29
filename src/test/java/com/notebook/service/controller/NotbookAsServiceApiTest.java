@@ -2,7 +2,7 @@ package com.notebook.service.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.notebook.service.InterpreterApplication;
+import com.notebook.service.NotbookAsServiceApp;
 import com.notebook.service.model.NotebookRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = InterpreterApplication.class)
+@SpringBootTest(classes = NotbookAsServiceApp.class)
 @AutoConfigureMockMvc
 public class NotbookAsServiceApiTest {
 
@@ -65,7 +65,7 @@ public class NotbookAsServiceApiTest {
 		assertEquals("Language Not Supported", message);
 	}
 
-	// TODO add time out test
+	// Food for thought: add time out test
 
 	public static String asJsonString(final Object obj) throws JsonProcessingException {
 		return new ObjectMapper().writeValueAsString(obj);

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "global-settings")
-public class ApplicationProperties {
+public class AppProperties {
 
 	private Long timeOutDuration;
 
