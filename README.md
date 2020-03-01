@@ -28,7 +28,7 @@ following instruciton at: [Getting Started with GraalVM](https://www.graalvm.org
 
 
 
-###Graal python installer
+### Graal python installer
 Download [GraalVM python](https://www.graalvm.org/docs/reference-manual/languages/python/)
 ```$shell
 $ gu -c  -L install python-installable-svm-java8-darwin-amd64-20.0.0.jar
