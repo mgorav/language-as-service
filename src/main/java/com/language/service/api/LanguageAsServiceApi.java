@@ -1,8 +1,8 @@
 package com.language.service.api;
 
 import com.language.service.LanguageRequestParsingService;
-import com.language.service.NotebookLanguageService;
-import com.language.service.NotebookLanguageServiceFactory;
+import com.language.service.LanguageService;
+import com.language.service.LanguageServiceFactory;
 import com.language.service.model.GraalExecutionResponse;
 import com.language.service.model.LanguageExecutionRequest;
 import com.language.service.model.LanguageRequest;
@@ -26,15 +26,15 @@ public class LanguageAsServiceApi {
     private LanguageRequestParsingService languageRequestParsingService;
 
     @Autowired
-    private NotebookLanguageServiceFactory notebookLanguageServiceFactory;
+    private LanguageServiceFactory languageServiceFactory;
 
     @PostMapping("/execute")
     public ResponseEntity<LanguageResponse> execute(@ValidRequest @RequestBody LanguageRequest languageRequest, HttpSession httpSession) throws LanguageExecutionException {
         LanguageExecutionRequest request = languageRequestParsingService.parseInterpreterRequest(languageRequest);
-        NotebookLanguageService notebookLanguageService = notebookLanguageServiceFactory.getInterpreterService(request.getLanguage());
+        LanguageService languageService = languageServiceFactory.getInterpreterService(request.getLanguage());
         String sessionId = languageRequest.getInteractionId() != null ? languageRequest.getInteractionId() : httpSession.getId();
         request.setInteractionId(sessionId);
-        GraalExecutionResponse graalExecutionResponse = notebookLanguageService.execute(request);
+        GraalExecutionResponse graalExecutionResponse = languageService.execute(request);
         LanguageResponse languageResponse = new LanguageResponse();
         languageResponse.setResponse(graalExecutionResponse.getOutput());
         languageResponse.setErrors(graalExecutionResponse.getErrors());

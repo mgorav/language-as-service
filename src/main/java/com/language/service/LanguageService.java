@@ -6,10 +6,10 @@ import com.language.service.model.Language;
 import com.language.service.model.exception.LanguageExecutionException;
 
 /**
- * Interpreters Service Interface
+ * Language Interpreters Service Interface
  *
  */
-public interface NotebookLanguageService {
+public interface LanguageService {
 
     /**
      * Get Language from Service
