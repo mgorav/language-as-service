@@ -29,7 +29,7 @@ public abstract class GraalVmLanguageService implements LanguageService {
     @Override
     public GraalExecutionResponse execute(LanguageExecutionRequest request) {
 
-        // Check if language supported
+        // Validated language supported
         if (unsupportedLanguage()) {
             throw new LanguageExecutionLanguageNotSupportedException();
         }
