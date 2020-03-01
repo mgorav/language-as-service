@@ -17,12 +17,12 @@ import java.util.Map;
 public class LanguageServiceFactory {
 
     // Food for thought: use enum map
-    private Map<Language, LanguageService> interpreterServiceMap = new EnumMap<>(Language.class);
+    private Map<Language, LanguageService> avilableLanguageServices = new EnumMap<>(Language.class);
 
     @Autowired
     public LanguageServiceFactory(List<LanguageService> languageServices) {
         for (LanguageService languageService : languageServices) {
-            interpreterServiceMap.put(languageService.getInterpreterLanguage(), languageService);
+            avilableLanguageServices.put(languageService.getInterpreterLanguage(), languageService);
         }
     }
 
@@ -34,9 +34,9 @@ public class LanguageServiceFactory {
      */
     public LanguageService getInterpreterService(String language) {
         Language notebookLanguage = Language.getSupportedNotebookLanguageFromLanguageName(language);
-        if (notebookLanguage == null || !interpreterServiceMap.containsKey(notebookLanguage)) {
+        if (notebookLanguage == null || !avilableLanguageServices.containsKey(notebookLanguage)) {
             throw new LanguageExecutionLanguageNotSupportedException();
         }
-        return interpreterServiceMap.get(notebookLanguage);
+        return avilableLanguageServices.get(notebookLanguage);
     }
 }
