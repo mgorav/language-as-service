@@ -22,7 +22,7 @@ public abstract class GraalVmLanguageService implements LanguageService {
     @Autowired
     private AppProperties appProperties;
 
-    private Map<String, GraalExecutionContext> sessionContexts = new ConcurrentHashMap<>();
+    private Map<String, GraalExecutionContext> sessionGraalExecutionContexts = new ConcurrentHashMap<>();
     /**
      * {@inheritDoc}
      */
@@ -62,7 +62,7 @@ public abstract class GraalVmLanguageService implements LanguageService {
             timer.purge();
             if (e.isCancelled()) {
                 // remove context
-                sessionContexts.remove(request.getInteractionId());
+                sessionGraalExecutionContexts.remove(request.getInteractionId());
                 throw new LanguageExecutionTimeOutException();
             }
 
@@ -84,7 +84,7 @@ public abstract class GraalVmLanguageService implements LanguageService {
      * @return
      */
     private GraalExecutionContext getContext(String sessionId) {
-        return sessionContexts.computeIfAbsent(sessionId, key -> buildContext());
+        return sessionGraalExecutionContexts.computeIfAbsent(sessionId, key -> buildContext());
     }
 
     private GraalExecutionContext buildContext() {
