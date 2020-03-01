@@ -1,5 +1,5 @@
 # Language As Service
-Execute python code as a service. We live in the world of polygot programming lanauge. GraalVM provide a universal VM for lanauges like Java, Python, Kotlin, R etc. This project provide Notebook As Service for language "python" using Spring BOOT. This service provide ease of interaction with python. It execute script, along with the outcome of the scirpt as , it provides error if there are any.
+Execute python code as a service. We live in the world of polygot programming lanauge. GraalVM provide a universal VM for lanauges like Java, Python, Kotlin, R etc. This project provide Language As Service for language "python" using Spring BOOT. This service provide ease of interaction with python. It execute script, along with the outcome of the scirpt as , it provides error if there are any.
     
     
 # Installation 
@@ -7,7 +7,7 @@ Execute python code as a service. We live in the world of polygot programming la
 Clone project into a local folder.
 
 ```$shell 
-$ git clone https://github.com/mgorav/notebook-as-service.git
+$ git clone https://github.com/mgorav/language-as-service.git
 ```
 
 ## Maven Installation
@@ -48,13 +48,13 @@ Docker run:
 ```$shell
 mvn dockerfile:build
 
-docker run -p 6464:6464 notebook-as-service/notebook-as-service
+docker run -p 6464:6464 language-as-service/language-as-service
 ```
 
 Time to play:
 
 ```
-$ java -jar target/notebook-as-service-1.0.0-SNAPSHOT.jar
+$ java -jar target/language-as-service-1.0.0-SNAPSHOT.jar
 ```
 
 Play time...Hit the url:
