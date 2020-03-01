@@ -8,15 +8,15 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.notebook.service</groupId>
-    <artifactId>notebook-as-service</artifactId>
+    <groupId>com.language.service</groupId>
+    <artifactId>language-as-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>graal-notebook-as-service</name>
-    <description>Graal VM based notebook</description>
+    <description>Graal VM based language as service</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <docker.image.prefix>notebook-as-service</docker.image.prefix>
+        <docker.image.prefix>language-as-service</docker.image.prefix>
     </properties>
 
     <dependencies>
