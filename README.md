@@ -1,7 +1,5 @@
 # Language As Service
 
-
-Language As Service
 Each language comes with its runtime env and other infrastructure intricacies,. Can you we  put en end to this & having generic runtime execution. Possible yes, using GraalVM.
 
 GraalVM, provides, polyglot virtual machine, as a alternative for Google’s Go (golang). This VM is a “universal VM”. It can run applications written in language likeJavaScript, Python, Ruby, C, and C++, and JVM based languages like Java, Kotlin, and Scala.
