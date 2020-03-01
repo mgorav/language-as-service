@@ -33,10 +33,10 @@ public class LanguageServiceFactory {
      * @throws LanguageExecutionLanguageNotSupportedException in case no service service mapped to the given language
      */
     public LanguageService getInterpreterService(String language) {
-        Language notebookLanguage = Language.getSupportedNotebookLanguageFromLanguageName(language);
-        if (notebookLanguage == null || !avilableLanguageServices.containsKey(notebookLanguage)) {
+        Language requestedLanguage = Language.getSupportedNotebookLanguageFromLanguageName(language);
+        if (requestedLanguage == null || !avilableLanguageServices.containsKey(requestedLanguage)) {
             throw new LanguageExecutionLanguageNotSupportedException();
         }
-        return avilableLanguageServices.get(notebookLanguage);
+        return avilableLanguageServices.get(requestedLanguage);
     }
 }
