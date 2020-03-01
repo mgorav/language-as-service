@@ -1,6 +1,14 @@
 # Language As Service
-Execute python code as a service. We live in the world of polygot programming lanauge. GraalVM provide a universal VM for lanauges like Java, Python, Kotlin, R etc. This project provide Language As Service for language "python" using Spring BOOT. This service provide ease of interaction with python. It execute script, along with the outcome of the scirpt as , it provides error if there are any.
-    
+
+
+Language As Service
+Each language comes with its runtime env and other infrastructure intricacies,. Can you we  put en end to this & having generic runtime execution. Possible yes, using GraalVM.
+
+GraalVM, provides, polyglot virtual machine, as a alternative for Google’s Go (golang). This VM is a “universal VM”. It can run applications written in language likeJavaScript, Python, Ruby, C, and C++, and JVM based languages like Java, Kotlin, and Scala.
+
+Checkout my project which demonstrate "Language As Service": https://lnkd.in/e2t6_s3
+
+This provide ability to execute python code as a service. We live in the world of polygot programming lanauge. GraalVM provide a universal VM for languages like Java, Python, Kotlin, R etc. This service provide's - Language As Service for language "python" using Spring BOOT. This service provide ease of interaction with python. It execute script, along with the outcome of the script as , it provides error if there are any.    
     
 # Installation 
 
