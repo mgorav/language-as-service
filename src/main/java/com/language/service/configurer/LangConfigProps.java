@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AppProperties {
+public class LangConfigProps {
 
 	private Long timeOutDuration;
 

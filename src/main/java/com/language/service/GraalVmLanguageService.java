@@ -1,6 +1,6 @@
 package com.language.service;
 
-import com.language.service.configurer.AppProperties;
+import com.language.service.configurer.LangConfigProps;
 import com.language.service.model.LanguageExecutionRequest;
 import com.language.service.model.GraalExecutionContext;
 import com.language.service.model.GraalExecutionResponse;
@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class GraalVmLanguageService implements LanguageService {
 
     @Autowired
-    private AppProperties appProperties;
+    private LangConfigProps langConfigProps;
 
     private Map<String, GraalExecutionContext> sessionGraalExecutionContexts = new ConcurrentHashMap<>();
     /**
@@ -50,7 +50,7 @@ public abstract class GraalVmLanguageService implements LanguageService {
                     e.printStackTrace();
                 }
             }
-        }, appProperties.getTimeOutDuration());
+        }, langConfigProps.getTimeOutDuration());
 
         try {
             context.eval(getInterpreterLanguage().getName(), request.getCode());
